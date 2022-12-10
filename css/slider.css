@@ -1,0 +1,118 @@
+.container1 {
+    position: relative;
+}
+
+.container1 .slide-container .slide {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 9%;
+    padding-bottom: 70px;
+}
+
+.container1 .slide-container .slide .content {
+    flex: 1 1 350px;
+    animation: slideContent .4s linear .6s backwards;
+}
+
+@keyframes slideContent {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+.container1 .slide-container .slide .image {
+    flex: 1 1 500px;
+}
+
+.container1 .slide-container .slide .image img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    animation: slideImage .4s linear;
+}
+
+@keyframes slideImage {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.container1 .slide-container .slide .content h3 {
+    font-size: 70px;
+    color: #333;
+}
+
+.container1 .slide-container .slide .content p {
+    font-size: 20px;
+    color: #666;
+    padding: 10px 0;
+    text-align: justify;
+}
+
+.container1 .slide-container {
+    display: none;
+}
+
+.container1 .slide-container.active {
+    display: block !important;
+}
+
+.container1 .slide-container:nth-child(1) .slide {
+    background: linear-gradient(90deg, #f9f9f9 70%, #96500ac0 30.1%);
+}
+
+.container1 .slide-container:nth-child(2) .slide {
+    background: linear-gradient(90deg, #f9f9f9 70%, #752a07b1 30.1%);
+}
+
+.container1 .slide-container:nth-child(3) .slide {
+    background: linear-gradient(90deg, #f9f9f9 68%, #752a0749  32.1%);
+}
+
+.container1 #prev , .container1 #next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    background-color: #333;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.container1 #prev:hover, .container1 #next:hover {
+    background-color: #666;
+}
+
+.container1 #prev {
+    left: 20px;
+}
+
+.container1 #next {
+    right: 20px;
+}
+
+@media (max-width:500px) {
+    .container1 #prev {
+        left: 0px;
+        top: 60%;
+    }
+    .container1 #next {
+        right: 0px;
+        top: 60%;
+    }
+}
+
+.custom {
+    object-fit: cover;
+    height: 300px !important;
+}
