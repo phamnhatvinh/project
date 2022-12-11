@@ -103,7 +103,7 @@ body{
   height: 15px;
   width: 15px;
   border-radius: 20px;
-  background: white;
+  background: rgba(128, 128, 128, 0.247);
   margin: 0 4px;
   cursor: pointer;
   transition: all 0.5s ease;
