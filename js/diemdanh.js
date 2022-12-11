@@ -265,10 +265,16 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
   btn2.addEventListener("click", () => cancel())
   btn3.addEventListener("click", () => saveData())
 
-  function addData() {
+  async function addData() {
+    const docSnap = await getDoc(doc(db, "diemdanh", formattedToday))
+    const checked = docSnap.data().checked;
     for(let i = 0; i < 7; i++) {
         document.getElementById(members[i].id).innerHTML = ""
         $(document.getElementById(members[i].id)).append(`<input id="check-${ members[i].id }" class="form-check-input checkbox" type="checkbox">`);
+        for(let j = 0; j < checked.length; j++) {
+            if(checked[j] === members[i].id)
+                document.getElementById(`check-${ members[i].id }`).checked = true
+        }
     }
 
     $(btn1).addClass("d-none");
@@ -299,24 +305,24 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
         document.getElementById(members[i].id).innerHTML = ""
     }
 
-    const docSnap = await getDoc(doc(db, "diemdanh", formattedToday))
-    if(docSnap.data()){
-        const check = docSnap.data().checked
-        for(let i = 0; i < check.length; i++) {
-            let flag = false
-            checked.forEach(data => {
-                if(check[i] === data) 
-                    flag = true
-            })
-            if(!flag)   checked.push(check[i]);
-        }
-    }
+    // const docSnap = await getDoc(doc(db, "diemdanh", formattedToday))
+    // if(docSnap.data()){
+    //     const check = docSnap.data().checked
+    //     for(let i = 0; i < check.length; i++) {
+    //         let flag = false
+    //         checked.forEach(data => {
+    //             if(check[i] === data) 
+    //                 flag = true
+    //         })
+    //         if(!flag)   checked.push(check[i]);
+    //     }
+    // }
 
-    await setDoc(doc(db, "diemdanh", formattedToday), {
-        checked: checked
-    }); 
-
-      const toast = document.querySelector(".toast");
+    if(checked) {
+        await setDoc(doc(db, "diemdanh", formattedToday), {
+            checked: checked
+        }); 
+        const toast = document.querySelector(".toast");
       const closeIcon = document.querySelector(".close");
       const progress = document.querySelector(".progress");
 
@@ -344,6 +350,9 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
         clearTimeout(timer1);
         clearTimeout(timer2);
       });
+    }
+
+      
 
     loadData(formattedToday);
 
