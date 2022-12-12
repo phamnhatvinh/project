@@ -30,7 +30,7 @@
 
 .container1 .slide-container .slide .image img {
     width: 100%;
-    height: 500px;
+    height: 400px;
     object-fit: contain;
     animation: slideImage .4s linear;
 }
@@ -63,7 +63,7 @@
 }
 
 .container1 .slide-container:nth-child(1) .slide {
-    background: linear-gradient(90deg, #f9f9f9 69%, #96500ac0 31.1%);
+    background: linear-gradient(90deg, #f9f9f9 70%, #96500ac0 30.1%);
 }
 
 .container1 .slide-container:nth-child(2) .slide {
@@ -71,7 +71,7 @@
 }
 
 .container1 .slide-container:nth-child(3) .slide {
-    background: linear-gradient(90deg, #f9f9f9 68%, #752a0749  32.1%);
+    background: linear-gradient(90deg, #f9f9f9 70%, #752a0749  30.1%);
 }
 
 .container1 #prev , .container1 #next {
@@ -114,5 +114,10 @@
 
 .custom {
     object-fit: cover;
+    margin-left: 30px;
     height: 300px !important;
+}
+
+#img1 {
+    margin-left: 56px;
 }
