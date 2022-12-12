@@ -267,13 +267,16 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
 
   async function addData() {
     const docSnap = await getDoc(doc(db, "diemdanh", formattedToday))
-    const checked = docSnap.data().checked;
+    let checked = []
     for(let i = 0; i < 7; i++) {
         document.getElementById(members[i].id).innerHTML = ""
         $(document.getElementById(members[i].id)).append(`<input id="check-${ members[i].id }" class="form-check-input checkbox" type="checkbox">`);
-        for(let j = 0; j < checked.length; j++) {
-            if(checked[j] === members[i].id)
-                document.getElementById(`check-${ members[i].id }`).checked = true
+        if(docSnap.data()) {
+            checked = docSnap.data().checked
+            for(let j = 0; j < checked.length; j++) {
+                if(checked[j] === members[i].id)
+                    document.getElementById(`check-${ members[i].id }`).checked = true
+            }
         }
     }
 
