@@ -87,7 +87,7 @@
   <div class="container border p-4 mb-5 rounded shadow d-none" id="memberDetail">
   </div>
 
-  <div class="footer">
+  <div id="footer" class="footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center footer-content">
@@ -101,7 +101,7 @@
         </div>
         <div class="row">
             <div class="col footer-content text-center">
-                <h4 class="mt-5 size">Copyright by Nhóm 11</h4>
+                <h4 id="scroll" class="mt-5 size">Copyright by Nhóm 11</h4>
             </div>
         </div>
     </div>
@@ -220,7 +220,16 @@
         </div>
       </div>
     </div>`);
+
     $(detailCard).removeClass("d-none");
+
+    const scroll = document.getElementById("scroll")
+    scroll.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline:"nearest"
+    })
+
     }
 
     renderCard();
