@@ -49,7 +49,6 @@ function generateCalendar(month, year) {
 
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
         let day = document.createElement('div')
-        // day.addEventListener("click", () => test())
         if (i >= first_day.getDay()) {
             day.classList.add('calendar-day-hover')
             day.innerHTML = i - first_day.getDay() + 1
@@ -137,7 +136,6 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
             if (mm < 10) mm = '0' + mm;
   
             const clickDate = dd + '-' + mm + '-' + yyyy;
-            console.log(clickDate);
             loadData(clickDate)
         }
         else {
@@ -161,7 +159,6 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
         if (mm < 10) mm = '0' + mm;
 
         const clickDate = dd + '-' + mm + '-' + yyyy;
-        console.log(clickDate);
         loadData(clickDate)
     }
 }
@@ -308,19 +305,6 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
         document.getElementById(members[i].id).innerHTML = ""
     }
 
-    // const docSnap = await getDoc(doc(db, "diemdanh", formattedToday))
-    // if(docSnap.data()){
-    //     const check = docSnap.data().checked
-    //     for(let i = 0; i < check.length; i++) {
-    //         let flag = false
-    //         checked.forEach(data => {
-    //             if(check[i] === data) 
-    //                 flag = true
-    //         })
-    //         if(!flag)   checked.push(check[i]);
-    //     }
-    // }
-
     await setDoc(doc(db, "diemdanh", formattedToday), {
         checked: checked
     }); 
@@ -361,6 +345,7 @@ function clickDay(key, haveCurrDate, currMonth, currYear) {
     $(btn2).addClass("d-none");
     $(btn3).addClass("d-none");
   }
+
 
 
 
